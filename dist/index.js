@@ -47,7 +47,7 @@ async function main() {
     userRouter.post("/logout", handlerMiddleware.jwtMiddleware.bind(handlerMiddleware), handlerUser.logout.bind(handlerUser));
     //Content API
     // contentRouter.use(handlerMiddleware.jwtMiddleware.bind(handlerMiddleware));
-    contentRouter.post("/", handlerMiddleware.jwtMiddleware, handlerContent.createContent.bind(handlerContent));
+    contentRouter.post("/", handlerMiddleware.jwtMiddleware.bind(handlerMiddleware), handlerContent.createContent.bind(handlerContent));
     contentRouter.get("/:id", handlerContent.getContent.bind(handlerContent));
     contentRouter.get("/", handlerContent.getContents.bind(handlerContent));
     contentRouter.patch("/:id", handlerMiddleware.jwtMiddleware.bind(handlerMiddleware), handlerContent.updateContent.bind(handlerContent));
